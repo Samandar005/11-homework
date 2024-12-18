@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block title %} {{ category|title }} Tafsilotlar {% endblock %}
+
+{% block content %}
+ <div class="news-item">
+     <a href="{% url 'home' %}" class="read-more">Back to Home</a>
+ </div>
+
+    <div class="container">
+        <article class="news-detail">
+            <h2>{{ category|title }} Sarlavhasi</h2>
+            <p class="news-meta">Sana:{{ article.created_at|date:"Y~m~d" }} | Muallif:{{ article.author_name|default:'Unknown' }}</p>
+            <div class="news-content">
+                <p>{{ article.long_content }}</p>
+            </div>
+        </article>
+    </div>
+{% endblock %}

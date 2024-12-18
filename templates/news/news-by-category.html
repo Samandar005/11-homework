@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ category|title }} Yangiliklari {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2 id="category-title">
+            {% if category %}
+                {{ category|title }} Yangiliklari
+            {% else %}
+                Barcha Yangiliklar
+            {% endif %}
+        </h2>
+        <div id="news-list">
+            {% if articles %}
+                {% for article in articles %}
+                    <div class="news-item">
+                        <h3>{{ article.title }}</h3>
+                        <p>{{ article.short_content }}</p>
+                        <a href="{{ article.get_detail_url }}" class="read-more">Batafsil</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Hozircha yangiliklar mavjud emas.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

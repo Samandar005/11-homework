@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ category|title }} Tafsilotlari {% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% for article in articles %}
+        <div class="news-item">
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.short_content }}</p>
+            <a href="{{ article.get_detail_url }}" class="read-more">Batafsil</a>
+        </div>
+        {% empty %}
+            <h2>Hech narsa topilmadi</h2>
+        {% endfor %}
+    </div>
+{% endblock %}
